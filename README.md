@@ -6,7 +6,7 @@
 
 ### Why Cucumber?
 
-Automatic testing is another essential building block in the DevOps concept. A well known and widely used tool for automatic testing of web applications  is Selenium. While it can be nicely used also to test with Natural Ajax applications, it is not the ideal tool for acceptance tests. Why? If we use Selenium stand-alone, there is no separation between specifying a test and implementing a test. Specifying a test scenario should be done from a business perspective and should not require programming skills. Implementing a test on the other hand can be done by developers and will require some programming skills.
+Automatic testing is another essential building block in the DevOps concept. A well known and widely used tool for automatic testing of web applications  is Selenium. While it can be nicely used also to test Natural Ajax applications, it is not the ideal tool for acceptance tests. Why? If we use Selenium stand-alone, there is no separation between specifying a test and implementing a test. Specifying a test scenario should be done from a business perspective and should not require programming skills. Implementing a test on the other hand can be done by developers and will require some programming skills.
 
 Cucumber enforces this separation. The specification of a test scenario can be done nearly in natural language. Only the implementation of a test scenario requires programming, but the effort can be heavily reduced by a powerful API and by test code reusage.
 
@@ -24,7 +24,7 @@ Using Cucumber, we specify our test scenarios as follows:
 
 		Scenario: Multiplication
 
-		    Given the Calculator application is running
+			Given the Calculator application is running
     		And I press the 2 key
     		And I press the 3 key
     		And I press the multiplication key
