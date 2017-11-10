@@ -14,7 +14,7 @@ end
 
 Given(/^I press the (\d+) key$/) do |arg1|
   @session.within_frame @frame do
-    @session.find(:tid, "on" + arg1).click
+    @session.find(:tid, "on" + arg1.to_s).click
   end
 end
 
@@ -38,7 +38,7 @@ end
 
 Then(/^the result field should contain (\d+)$/) do |arg1|
   @session.within_frame @frame do
-    expect(@session.find(:tid, "result").value).to eq arg1
+    expect(@session.find(:tid, "result").value).to eq arg1.to_s
   end
 end
 
