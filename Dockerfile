@@ -1,5 +1,5 @@
 # For this example we take an Ubuntu image as basis.
-FROM ubuntu:16.04
+FROM ubuntu:18.04
 
 # This is optional. There are many other LABELs possible.
 LABEL maintainer "thomas.schwade@zerodrive.net"
@@ -20,15 +20,19 @@ RUN apt-get install zlib1g-dev --assume-yes
 RUN apt-get install libfontconfig --assume-yes
 RUN ruby -v
 
-# Install PhantomJS (a headless browser based on webkit).
-RUN apt-get install wget --assume-yes
-RUN wget https://bitbucket.org/ariya/phantomjs/downloads/phantomjs-2.1.1-linux-x86_64.tar.bz2
-RUN tar -xjf phantomjs-2.1.1-linux-x86_64.tar.bz2
-RUN mv phantomjs-2.1.1-linux-x86_64 /opt/phantomjs
-RUN ln -s /opt/phantomjs/bin/phantomjs /usr/local/bin/phantomjs
-RUN phantomjs -v
+# Install Firefox.
+RUN apt-get install firefox --assume-yes
+RUN firefox -v
 
-# Install the Ruby gems we need to run Cucumber/Capybara/poltergeist
+# Install geckodriver.
+RUN apt-get install wget --assume-yes
+RUN wget https://github.com/mozilla/geckodriver/releases/download/v0.24.0/geckodriver-v0.24.0-linux64.tar.gz
+RUN tar -xvzf geckodriver-v0.24.0-linux64.tar.gz
+RUN rm geckodriver-v0.24.0-linux64.tar.gz
+RUN chmod +x geckodriver
+RUN mv geckodriver /usr/local/bin/
+
+# Install the Ruby gems we need to run Cucumber/Capybara/Selenium
 COPY Gemfile /home/sag
 RUN bundle install
 

@@ -1,6 +1,6 @@
 ![](logo_s.png)
 
-##### Thomas Schwade - September 26, 2017
+##### Thomas Schwade - July 18, 2019
 
 ## Testing a Natural Ajax application with Cucumber
 
@@ -102,18 +102,18 @@ This skeleton is then filled with "flesh" by a developer. This can be done with 
 
 ### What do we need?
 
-We use a stack of four tools:
+We use the following stack of tools:
 
 - Cucumber: Allows us to specify and execute tests scenarios in nearly natural language.
 - Capybara: A high level API to access web pages.
-- PhantomJS: A headless browser based on webkit under which the test is executed.
-- poltergeist: A Capybara driver for PhantomJS.
+- Firefox with geckodriver: We use Firefox in headless mode, which is the most comfortable approach to end-to end testing in a continuous integration scenario.
+- selenium-webdriver: A Capybara driver for Selenium.
 
 ### A playground for the first steps
 
-Installing the required components is a tedious task, therefore I have prepared a Dockerfile that you can use to build a container with the full tool stack.
+Installing the required components is a tedious task. Therefore I have prepared a Dockerfile that you can use to build a container with the full tool stack.
 
-First of all we need a machine where Docker is installed. For this example I used an Oracle VirtualBox VM, running Ubuntu 16.04. On this VM I installed Docker as described in https://docs.docker.com/engine/installation/linux/ubuntu/
+We just need a machine where Docker is installed. For this example I used an Oracle VirtualBox VM, running Ubuntu 18.04. On this VM I installed Docker as described in https://docs.docker.com/engine/installation/linux/ubuntu/
 
 To run the tests, you should have the Natural Ajax Demo application configured in the following way:
 

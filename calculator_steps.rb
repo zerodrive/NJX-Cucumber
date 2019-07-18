@@ -1,4 +1,12 @@
-require 'capybara/poltergeist'
+require 'capybara'
+require 'selenium-webdriver'
+
+Capybara.register_driver :headless_firefox do |app|
+  browser_options = Selenium::WebDriver::Firefox::Options.new()
+  browser_options.args << '--headless'
+
+Capybara::Selenium::Driver.new(app, browser: :firefox, options: browser_options)
+end
 
 Capybara.default_selector = :xpath
 Capybara.add_selector(:tid) do
@@ -6,9 +14,9 @@ Capybara.add_selector(:tid) do
 end
 
 Given(/^the (.*) application is running$/) do |arg1|
-  url = 'http://snowball:8480/NaturalAjaxDemos/servlet/StartCISPage?PAGEURL=/cisnatural/NatLogon.html&xciParameters.natsession=' + arg1
+  url = 'http://vds2004x8.startdedicated.de:8888/NaturalAjaxDemos/servlet/StartCISPage?PAGEURL=/cisnatural/NatLogon.html&xciParameters.natsession=' + arg1
   @frame = 'WA0'
-  @session = Capybara::Session.new(:poltergeist)
+  @session = Capybara::Session.new(:headless_firefox)
   @session.visit url
 end
 
