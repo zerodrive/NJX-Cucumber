@@ -14,7 +14,7 @@ Capybara.add_selector(:tid) do
 end
 
 Given(/^the (.*) application is running$/) do |arg1|
-  url = 'http://vds2004x8.startdedicated.de:8888/NaturalAjaxDemos/servlet/StartCISPage?PAGEURL=/cisnatural/NatLogon.html&xciParameters.natsession=' + arg1
+  url = 'http://172.17.0.4:8080/NaturalAjaxDemos/servlet/StartCISPage?PAGEURL=/cisnatural/NatLogon.html&xciParameters.natsession=' + arg1
   @frame = 'WA0'
   @session = Capybara::Session.new(:headless_firefox)
   @session.visit url
